@@ -1,0 +1,9 @@
+torch>=1.11.0
+torchvision>=0.9.1
+tensorboard
+numpy
+plyfile
+trimesh
+argparse
+scikit-image
+ordered-set
