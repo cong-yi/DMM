@@ -1,0 +1,65 @@
+{
+  "Description" : [ "This experiment learns a shape representation for overall intra-oral model ",
+                    "using data from <your data source name>" ],
+  "DataSource" : "<your data source name>",
+  "TrainSplit" : "examples/splits/train_split.json",
+  "labels" : [0, 11, 12, 13, 14, 15, 16, 17, 21, 22, 23, 24, 25, 26, 27],
+  "GumDeformNetworkSpecs" : {
+	"latent_dim": 10,
+    "mlp_input_dim" : 3,
+    "mlp_output_dim" : 5,
+    "mlp_num_hidden_layers" : 5,
+    "mlp_hidden_features" : 64,
+    "model_type" : "sine",
+    "hyper_hidden_layers" : 1,
+    "hyper_hidden_features" : 128
+    },
+  "TeethDeformNetworkSpecs" : {
+	"latent_dim": 10,
+    "mlp_input_dim" : 3,
+    "mlp_output_dim" : 8,
+    "mlp_num_hidden_layers" : 5,
+    "mlp_hidden_features" : 64,
+    "model_type" : "sine",
+    "hyper_hidden_layers" : 1,
+    "hyper_hidden_features" : 128
+    },
+  "NetworkArchRef" : "mlp",
+  "NetworkSpecsRef" : {
+	"latent_size": 0,
+    "init_dims" : [128, 128, 128],
+    "dropout" : [],
+    "dropout_prob" : 0,
+    "init_norm_layers" : [],
+    "xyz_in_all" : false,
+    "use_tanh" : false,
+    "weight_norm" : true,
+	"activation" : "sine",
+	"output_dims" : 1
+    },
+  "NumEpochs" : 301,
+  "SnapshotFrequency" : 10,
+  "AdditionalSnapshots" : [ 5 ],
+  "LearningRateSchedule" : {
+	"InitLr" : [
+		{
+		  "Type" : "Step",
+		  "Initial" : 1e-4
+		},
+		{
+		  "Type" : "Step",
+		  "Initial" : 1e-4
+		},
+		{
+		  "Type" : "Step",
+		  "Initial" : 1e-4
+		}
+	],
+  "Interval" : 30,
+  "Factor" : 0.5
+	},
+  "SamplesPerScene" : 16384,
+  "ScenesPerBatch" : 8,
+  "DataLoaderThreads" : 16,
+  "ClampingDistance" : 0.1
+}
