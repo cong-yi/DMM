@@ -36,7 +36,7 @@ python train_dmm.py -e ./examples/upper_dmm
 ```
 
 ## Pre-trained model
-You can download the pre-trained models from [drive](https://drive.google.com/file/d/1H79mOPZMyIWu4V8uugdMDbaf5gPvzWmV/view?usp=sharing) and put it under the subfolder `examples`.
+You can download the pre-trained models from [drive](https://drive.google.com/file/d/1nNyTdI59nUhmuoaT0YYG5CP1QsERJSUH/view?usp=share_link) and put it under the subfolder `examples/upper_dmm`.
 
 ## Evaluate the network
 To generate the reference shapes:
@@ -45,8 +45,11 @@ python generate_meanshapes.py -e ./examples/upper_dmm
 ```
 
 To reconstruct dental scans:
+```
+python reconstruct.py -e ./examples/upper_dmm -d ./test_data --iters 300 --lr 1e-3 -s examples/splits/test_split.json
+```
 
-[Coming soon]
+Due to the protocol governing the usage of our clinical data, distribution to the public is not allowed. However, I have converted a publicly available [3D dental model](https://dentistry.co.uk/2022/03/11/3shape-model-maker-create-dental-models-from-3shape-trios-scans-in-minutes/) into SDF sampling data, complete with teeth numbering, for the purpose of conducting a simple test (put the [data](https://drive.google.com/file/d/18nNzqGEpRB5N6vki6jrDL6XEAf20nAqt/view?usp=sharing) under the subfolder `test_data`). This test data example, together with the reference shapes, serves as the reference for data alignment.
 
 ## Citation
 If you find DMM useful for your research, please cite our
